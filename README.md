@@ -46,6 +46,10 @@ Link to [site](https://example.com)
 
 ```
 
+## Example
+
+<img src="screenshots/1.png" width="603" alt='example'>
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
