@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-markdown": ["./src/index"]
+      "react-native-awesome-markdown": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

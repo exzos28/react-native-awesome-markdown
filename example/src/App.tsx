@@ -1,18 +1,12 @@
-import * as React from 'react';
+import React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-markdown';
+import { StyleSheet, View } from 'react-native';
+import Markdown from 'react-native-awesome-markdown';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Markdown text={TEST} overridden={{}} />
     </View>
   );
 }
@@ -23,9 +17,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
 });
+
+const TEST = `
+# Top level heading
+
+## Heading of the second level
+
+### Third level heading
+
+#### Fourth level heading
+
+##### Level 5 heading
+
+###### Level 6 heading
+
+Paragraph with *italic*, **bold** and ***bold italic***.
+
+Underlined text.
+
+> block quote.
+
+Link to [site](https://example.com)
+`;

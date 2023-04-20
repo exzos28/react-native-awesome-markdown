@@ -1,7 +1,7 @@
 {
-  "name": "react-native-markdown",
+  "name": "react-native-awesome-markdown",
   "version": "0.1.0",
-  "description": "test",
+  "description": "",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -37,25 +37,31 @@
   },
   "keywords": [
     "react-native",
+    "web",
     "ios",
     "android"
   ],
-  "repository": "https://github.com/exzos28/react-native-markdown",
+  "repository": "https://github.com/exzos28/react-native-awesome-markdown",
   "author": "exzos <oleksandr.kurinnyi.dev@gmail.com> (https://github.com/exzos28)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/exzos28/react-native-markdown/issues"
+    "url": "https://github.com/exzos28/react-native-awesome-markdown/issues"
   },
-  "homepage": "https://github.com/exzos28/react-native-markdown#readme",
+  "homepage": "https://github.com/exzos28/react-native-awesome-markdown#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
+  "dependencies": {
+    "entities": "^4.5.0",
+    "marked": "^4.3.0"
+  },
   "devDependencies": {
-    "@evilmartians/lefthook": "^1.2.2",
     "@commitlint/config-conventional": "^17.0.2",
+    "@evilmartians/lefthook": "^1.2.2",
     "@react-native-community/eslint-config": "^3.0.2",
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/jest": "^28.1.2",
+    "@types/marked": "^4.0.8",
     "@types/react": "~17.0.21",
     "@types/react-native": "0.70.0",
     "commitlint": "^17.0.2",
