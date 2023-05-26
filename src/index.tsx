@@ -95,6 +95,8 @@ export default function Markdown({
           return textChildren;
         case 'space':
           return <Text key={rootIndex}>{'\n'}</Text>;
+        case 'br':
+          return <Text key={rootIndex}>{'\n'}</Text>;
         default:
           console.warn(`${rootToken.type} type is not supported yet`);
           return null;

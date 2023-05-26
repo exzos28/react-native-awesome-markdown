@@ -23,9 +23,8 @@ export function getStyle(
   if (!previousToken) {
     return candidateStyle;
   }
-  const previousStyle: TextStyle = StyleSheet.flatten(
-    styles[getStyleKey(previousToken)]
-  );
+  const previousStyle =
+    StyleSheet.flatten(styles[getStyleKey(previousToken)]) ?? {};
   const previousMarginBottom = previousStyle.marginBottom;
   if (!previousMarginBottom) {
     return candidateStyle;
