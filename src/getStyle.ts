@@ -1,30 +1,31 @@
-import { StyleSheet, TextStyle } from 'react-native';
-import type { StyleSheetRecord, StyleSheetKey, Token } from './types';
+import { StyleSheet, type TextStyle } from 'react-native';
+import type { StyleSheetRecord, TokenKey } from './types';
+import type { Token } from 'marked';
 
 function getStyleKey(rootToken: Token) {
   const { type } = rootToken;
   switch (type) {
     case 'heading':
-      return ('h' + rootToken.depth) as StyleSheetKey;
+      return ('h' + rootToken.depth) as TokenKey;
     default:
-      return rootToken.type as StyleSheetKey;
+      return rootToken.type as TokenKey;
   }
 }
 
 export function getStyle(
   token: Token,
-  previousToken: Token | undefined,
+  topNeighbor: Token | undefined,
   styles: StyleSheetRecord
 ) {
   const candidateStyle: TextStyle = styles[getStyleKey(token)];
   if (!candidateStyle) {
     console.warn(`Style for token with type ${token.type} not found`);
   }
-  if (!previousToken) {
+  if (!topNeighbor) {
     return candidateStyle;
   }
   const previousStyle =
-    StyleSheet.flatten(styles[getStyleKey(previousToken)]) ?? {};
+    StyleSheet.flatten(styles[getStyleKey(topNeighbor)]) ?? {};
   const previousMarginBottom = previousStyle.marginBottom;
   if (!previousMarginBottom) {
     return candidateStyle;

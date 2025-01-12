@@ -1,16 +1,13 @@
-import { Platform, StyleSheet } from 'react-native';
-import type { OverriddenProps, StyleSheetRecord } from './types';
+import { Platform, StyleSheet as SS } from 'react-native';
+import type { StyleSheetRecord } from './types';
 import { GLOBAL_FONT_SIZE } from './constants';
 
-import NamedStyles = StyleSheet.NamedStyles;
-
 export default function createStyles(
-  props?: OverriddenProps
-): NamedStyles<StyleSheetRecord> {
-  const { globalFontSize = GLOBAL_FONT_SIZE, styles } = props ?? {};
-  const em = (value: number, contextFontSize = globalFontSize) =>
-    contextFontSize * value;
-  const defaultStyles: StyleSheetRecord = StyleSheet.create({
+  styles: Partial<StyleSheetRecord> | undefined,
+  fontSize: number = GLOBAL_FONT_SIZE
+): SS.NamedStyles<StyleSheetRecord> {
+  const em = (value: number, context = fontSize) => context * value;
+  const defaultStyles: StyleSheetRecord = SS.create({
     h1: {
       fontSize: em(2),
       marginTop: em(0.67, em(2)),
@@ -103,19 +100,22 @@ export default function createStyles(
       marginBottom: em(1),
       marginLeft: 40,
       marginRight: 40,
+      fontStyle: 'italic',
     },
     space: {},
     text: {},
+    list: {},
+    list_item: {},
   });
 
-  return mergeNamedStyles<StyleSheetRecord>(defaultStyles, styles);
+  return mergeNamedStyles(defaultStyles, styles);
 }
 
-export function mergeNamedStyles<T extends NamedStyles<T>>(
+export function mergeNamedStyles<T extends SS.NamedStyles<T>>(
   styles1: T,
   styles2?: Partial<T>
-): NamedStyles<T> {
-  const merged: NamedStyles<T> = { ...styles1 };
+): SS.NamedStyles<T> {
+  const merged: SS.NamedStyles<T> = { ...styles1 };
   for (const key in styles2) {
     const style = styles2[key];
     if (merged.hasOwnProperty(key)) {

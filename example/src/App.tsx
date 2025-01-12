@@ -1,12 +1,10 @@
-import React from 'react';
-
 import { StyleSheet, View } from 'react-native';
 import Markdown from 'react-native-awesome-markdown';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Markdown text={TEST} overridden={{}} />
+      <Markdown debug text={TEST} />
     </View>
   );
 }
@@ -39,4 +37,9 @@ Underlined text.
 > block quote.
 
 Link to [site](https://example.com)
-`;
+
+- First item
+- Second item
+- Third item
+- Fourth item
+`.trim();
