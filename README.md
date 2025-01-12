@@ -74,7 +74,7 @@ The `Markdown` component accepts the following props:
 | `text`        | `string`                                                          | **Required**. The Markdown text to render.                                                                                           |
 | `onLinkPress` | `(href: string) => void`                                          | Function to handle link presses. Allows overriding the default behavior when a link is clicked.                                      |
 | `fontSize`    | `number`                                                          | The global font size from which all other sizes inherit. Defaults to `14`.                                                           |
-| `styles`      | `StyleSheetRecord`                                                | An object containing styles to override the default styles. [List of available keys.](/#Supported tokens)                            |
+| `styles`      | `StyleSheetRecord`                                                | An object containing styles to override the default styles. [List of available keys.](#supported-tokens)                            |
 | `rules`       | `Record<TokenKey, (key: number, props: Attributes) => ReactNode>` | An object containing rendering methods to override the rendering of specific Markdown elements. Available keys: same as in `styles`. |
 | `debug`       | `boolean`                                                         | Enables debug mode. Available only in web.                                                                                           |
 
