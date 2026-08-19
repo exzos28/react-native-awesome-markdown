@@ -2,7 +2,7 @@ import { StyleSheet, type TextStyle } from 'react-native';
 import type { StyleSheetRecord, TokenKey } from './types';
 import type { Token } from 'marked';
 
-function getStyleKey(rootToken: Token) {
+export function getStyleKey(rootToken: Token) {
   const { type } = rootToken;
   switch (type) {
     case 'heading':

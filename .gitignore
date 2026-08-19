@@ -82,3 +82,6 @@ ios/generated
 android/generated
 
 .envrc
+
+# Reassure performance test results
+.reassure/

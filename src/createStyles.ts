@@ -1,6 +1,6 @@
 import { Platform, StyleSheet as SS } from 'react-native';
 import type { StyleSheetRecord } from './types';
-import { GLOBAL_FONT_SIZE } from './constants';
+import { GLOBAL_FONT_SIZE, LIST_INDENT } from './constants';
 
 export default function createStyles(
   styles: Partial<StyleSheetRecord> | undefined,
@@ -98,14 +98,76 @@ export default function createStyles(
     blockquote: {
       marginTop: em(1),
       marginBottom: em(1),
-      marginLeft: 40,
-      marginRight: 40,
+      marginLeft: 0,
+      marginRight: 0,
+      paddingLeft: em(1),
+      paddingVertical: em(0.5),
+      borderLeftWidth: 4,
+      borderLeftColor: '#D0D0D0',
+      backgroundColor: '#F6F8FA',
       fontStyle: 'italic',
     },
     space: {},
     text: {},
-    list: {},
-    list_item: {},
+    html: {},
+    hr: {
+      height: 1,
+      backgroundColor: '#D0D0D0',
+      marginTop: em(1),
+      marginBottom: em(1),
+    },
+    image: {
+      // A fixed size, not '100%': the image sits inline inside the
+      // paragraph's <Text> (matching how `![]()` behaves in HTML — inline,
+      // left-aligned, not stretched to the container). A percentage width
+      // in that inline context resolves unpredictably and visually centers
+      // the image instead of flowing it like regular inline content.
+      width: 200,
+      height: 200,
+      resizeMode: 'contain',
+    },
+    code: {
+      fontSize: em(0.9),
+      backgroundColor: '#F0F0F0',
+      padding: em(0.75, em(0.9)),
+      marginTop: em(1),
+      marginBottom: em(1),
+      ...Platform.select({
+        ios: { fontFamily: 'Menlo' },
+        android: { fontFamily: 'monospace' },
+        web: { fontFamily: 'monospace' },
+      }),
+    },
+    list: {
+      paddingLeft: LIST_INDENT,
+      marginTop: em(1),
+      marginBottom: em(1),
+    },
+    list_item: {
+      flexDirection: 'row',
+      marginBottom: em(0.25),
+    },
+    checkbox: {
+      marginRight: em(0.5),
+    },
+    table: {
+      borderWidth: 1,
+      borderColor: '#D0D0D0',
+      marginTop: em(1),
+      marginBottom: em(1),
+    },
+    tableRow: {
+      flexDirection: 'row',
+      borderBottomWidth: 1,
+      borderColor: '#D0D0D0',
+    },
+    tableCell: {
+      flex: 1,
+      minWidth: 100,
+      padding: em(0.5),
+      borderRightWidth: 1,
+      borderColor: '#D0D0D0',
+    },
   });
 
   return mergeNamedStyles(defaultStyles, styles);
