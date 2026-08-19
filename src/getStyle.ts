@@ -2,7 +2,7 @@ import { StyleSheet, type TextStyle } from 'react-native';
 import type { StyleSheetRecord, TokenKey } from './types';
 import type { Token } from 'marked';
 
-function getStyleKey(rootToken: Token) {
+export function getStyleKey(rootToken: Token) {
   const { type } = rootToken;
   switch (type) {
     case 'heading':
@@ -47,7 +47,7 @@ export function getStyle(
       previousMarginBottom > currentMarginTop
         ? 0
         : currentMarginTop - previousMarginBottom;
-    const newStyle: TextStyle = StyleSheet.flatten([
+    const newStyle = StyleSheet.flatten([
       candidateStyle,
       { marginTop: newMarginTop },
     ]);
