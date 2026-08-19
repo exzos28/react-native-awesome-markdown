@@ -1,3 +1,4 @@
+import { test } from '@jest/globals';
 import { measureRenders } from 'reassure';
 import Markdown from '../index';
 

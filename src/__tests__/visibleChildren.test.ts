@@ -1,4 +1,5 @@
 import type { Token } from 'marked';
+import { describe, expect, it } from '@jest/globals';
 import { visibleChildren } from '../visibleChildren';
 
 describe('visibleChildren', () => {

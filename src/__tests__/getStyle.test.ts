@@ -1,4 +1,5 @@
 import type { Token } from 'marked';
+import { describe, expect, it } from '@jest/globals';
 import { getStyle, getStyleKey } from '../getStyle';
 import createStyles from '../createStyles';
 

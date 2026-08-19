@@ -1,4 +1,5 @@
 import { StyleSheet, type TextStyle } from 'react-native';
+import { describe, expect, it } from '@jest/globals';
 import createStyles, { mergeNamedStyles } from '../createStyles';
 
 describe('createStyles', () => {

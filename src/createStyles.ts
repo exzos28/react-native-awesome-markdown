@@ -1,13 +1,14 @@
-import { Platform, StyleSheet as SS } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
+import type { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import type { StyleSheetRecord } from './types';
 import { GLOBAL_FONT_SIZE, LIST_INDENT } from './constants';
 
 export default function createStyles(
   styles: Partial<StyleSheetRecord> | undefined,
   fontSize: number = GLOBAL_FONT_SIZE
-): SS.NamedStyles<StyleSheetRecord> {
+): StyleSheetRecord {
   const em = (value: number, context = fontSize) => context * value;
-  const defaultStyles: StyleSheetRecord = SS.create({
+  const defaultStyles: StyleSheetRecord = StyleSheet.create({
     h1: {
       fontSize: em(2),
       marginTop: em(0.67, em(2)),
@@ -173,11 +174,10 @@ export default function createStyles(
   return mergeNamedStyles(defaultStyles, styles);
 }
 
-export function mergeNamedStyles<T extends SS.NamedStyles<T>>(
-  styles1: T,
-  styles2?: Partial<T>
-): SS.NamedStyles<T> {
-  const merged: SS.NamedStyles<T> = { ...styles1 };
+export function mergeNamedStyles<
+  T extends Record<string, ViewStyle | TextStyle | ImageStyle>,
+>(styles1: T, styles2?: Partial<T>): T {
+  const merged: T = { ...styles1 };
   for (const key in styles2) {
     const style = styles2[key];
     if (merged.hasOwnProperty(key)) {

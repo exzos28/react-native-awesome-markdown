@@ -47,7 +47,7 @@ export function getStyle(
       previousMarginBottom > currentMarginTop
         ? 0
         : currentMarginTop - previousMarginBottom;
-    const newStyle: TextStyle = StyleSheet.flatten([
+    const newStyle = StyleSheet.flatten([
       candidateStyle,
       { marginTop: newMarginTop },
     ]);
